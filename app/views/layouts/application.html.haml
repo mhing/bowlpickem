@@ -1,0 +1,13 @@
+!!! 5
+%html
+  %head
+    %title BowlPickem
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+%body{class: @body_class}
+  %article#mainContent
+    .body-content{:id => "controller_#{controller.controller_name}", class: @layout_class}
+      = yield
+
