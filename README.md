@@ -1,2 +1,2 @@
-bowlpickem
-==========
+NCAA Bowl Pickem Manager
+========================
