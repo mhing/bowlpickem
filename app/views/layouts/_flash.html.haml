@@ -1,0 +1,17 @@
+- unless flash.empty?
+  .flash-wrapper
+    - if flash[:alert] 
+      .alert.alert-danger.flash
+        .fa.fa-warning
+        = raw(flash[:alert])
+
+    - [:error, :notice].map do |key|
+      - unless flash[key].blank?
+        .alert.alert-warning.flash
+          .fa.fa-warning
+          = raw(flash[key])
+
+    - if flash[:success]
+      .alert.alert-success.flash
+        .fa.fa-check-circle
+        = raw(flash[:success])

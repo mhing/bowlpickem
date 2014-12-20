@@ -1,4 +1,6 @@
 BowlPickem::Application.routes.draw do
+  devise_for :users
+
   resources :bowl_games
   
   root :to => 'bowl_games#index'
