@@ -1,4 +1,7 @@
 BowlPickem::Application.routes.draw do
+  resources :bowl_games
+  
+  root :to => 'bowl_games#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

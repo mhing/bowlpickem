@@ -1,0 +1,11 @@
+.container-fluid
+  .row
+    .col-xs-12
+      %h2
+        Bowl Games
+
+  -if bowl_games.length > 0
+    
+    .row
+      .col-xs-2
+        =bowl_games.first.name
