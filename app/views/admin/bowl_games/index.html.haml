@@ -1,0 +1,51 @@
+.container-fluid
+  .row
+    .col-xs-10.col-xs-offset-1
+      .row
+        .col-xs-12
+          %h2
+            Bowl Game Manager
+
+      .row
+        .col-xs-12
+          =form_tag import_game_matchups_admin_bowl_games_path, multipart: true, id: "upload-form" do
+            .row
+              .col-xs-12
+                .col-xs-3
+                  .pull-left
+                    =fa_icon "upload", text: "Import Bowl Games"
+                .col-xs-7
+                  .pull-left
+                    = file_field_tag :file
+                  .pull-left
+                    = submit_tag "Import", class: "btn btn-primary"
+
+      .row.fold-line
+        .dark-line
+        .light-line
+
+      .row
+        .col-xs-12.bowl-games
+          -if bowl_games.length > 0
+            -bowl_games.each do |bowl_game|
+              -team_1 = bowl_game.team(0)
+              -team_2 = bowl_game.team(1)
+
+              .row.bowl-game
+                .col-xs-2
+                  =bowl_game.name
+                .col-xs-3
+                  -if team_1.name and team_2.name
+                    ="#{team_1.name} vs. #{team_2.name}"
+                  -else
+                    TBD
+                .col-xs-1
+                  =bowl_game.kickoff_date.strftime("%a, %b %d, %Y")
+                .col-xs-1
+                  =bowl_game.kickoff_time.strftime("%l:%M %P")
+                .col-xs-2
+                  =bowl_game.location
+                .col-xs-1
+                  =bowl_game.tv_provider
+                .col-xs-2
+                  =link_to "Edit", edit_admin_bowl_game_path(bowl_game)

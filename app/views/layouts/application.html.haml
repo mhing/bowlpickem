@@ -8,6 +8,10 @@
 
 %body{class: @body_class}
   %article#mainContent
+    = render 'layouts/navbar.html.haml'
+
+    = render :partial => 'layouts/flash', locals: {flash: flash}
+    
     .body-content{:id => "controller_#{controller.controller_name}", class: @layout_class}
       = yield
 

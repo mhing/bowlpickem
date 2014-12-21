@@ -1,7 +1,18 @@
 BowlPickem::Application.routes.draw do
-  resources :bowl_games
+  devise_for :users
+
+  resources :bowl_games, only: :index
+  resources :teams, only: :index
   
   root :to => 'bowl_games#index'
+
+  namespace 'admin' do
+    resources :bowl_games do 
+      collection do
+        post :import_game_matchups
+      end
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

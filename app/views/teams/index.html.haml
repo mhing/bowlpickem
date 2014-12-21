@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    .col-xs-10.col-xs-offset-1
+      .row
+        .col-xs-12
+          %h2
+            Teams
+
+      -if teams.length > 0
+        .row.view-header
+          .col-xs-2
+            Name
+
+        .row.fold-line
+          .dark-line
+          .light-line
+          
+        -teams.each do |team|
+          .row
+            .col-xs-2
+              =team.name

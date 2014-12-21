@@ -1,0 +1,19 @@
+-team_1 = bowl_game.team(0)
+-team_2 = bowl_game.team(1)
+
+.row.bowl-game
+  .col-xs-3
+    =bowl_game.name
+  .col-xs-3
+    -if team_1.name and team_2.name
+      ="#{team_1.name} vs. #{team_2.name}"
+    -else
+      TBD
+  .col-xs-2
+    =bowl_game.kickoff_date.strftime("%a, %b %d, %Y")
+  .col-xs-1
+    =bowl_game.kickoff_time.strftime("%l:%M %P")
+  .col-xs-2
+    =bowl_game.location
+  .col-xs-1
+    =bowl_game.tv_provider

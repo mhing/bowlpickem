@@ -1,0 +1,34 @@
+.container-fluid
+  .row
+    .col-xs-10.col-xs-offset-1
+      .row
+        .col-xs-12
+          .row
+            %h2
+              ="Edit Bowl Game: #{bowl_game.name}"
+
+      .row
+        .col-xs-7
+          =form_for bowl_game, url:{action:'update'} do |form|
+            .form-group
+              =form.label :name
+              =form.text_field :name, class: "form-control"
+
+            .form-group
+              =form.label :location
+              =form.text_field :location, class: "form-control"
+
+            .form-group
+              =form.label :kickoff_date
+              =form.date_select :kickoff_date, class: "form-control"
+
+            .form-group
+              =form.label :kickoff_time
+              =form.time_select :kickoff_time, class: "form-control"              
+            .form-group
+              =form.label :tv_provider
+              =form.text_field :tv_provider, class: "form-control"
+
+            .form-group
+              =form.submit "Update", class: "btn btn-primary"
+              =link_to "Cancel", admin_bowl_games_path, class: "btn btn-warning"
