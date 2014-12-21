@@ -1,0 +1,7 @@
+@import "mixins"; 
+@import "variables";
+
+.team-view {
+  @include index-view();
+  @include fold-line();
+}

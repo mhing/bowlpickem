@@ -1,0 +1,33 @@
+@mixin split-line() {
+  border-top: 1px solid;
+}
+
+@mixin index-view() {
+  padding-bottom: 50px;
+  .view-header {
+    font-weight: bold;
+  }
+}
+
+@mixin fold-line() {
+  .fold-line {
+    padding: 5px 0;
+    .dark-line {
+      @include split-line();
+      border-color: $crease-top;
+    }
+    .light-line {
+      @include split-line();
+      border-color: $crease-bottom;
+    }
+  }
+}
+
+@mixin alternate-view-color() {
+  .row:nth-of-type(odd) {
+    background-color: #ffffff;
+  }
+  .row:nth-of-type(even) {
+    background-color: $darker;
+  }
+}

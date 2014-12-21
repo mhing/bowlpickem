@@ -1,7 +1,7 @@
 @import "mixins"; 
 @import "variables";
 
-.bowl-game-view {
+.admin-view {
   @include index-view();
   @include fold-line();
   .bowl-games {

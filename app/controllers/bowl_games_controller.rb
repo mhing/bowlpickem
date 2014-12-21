@@ -4,6 +4,6 @@ class BowlGamesController < ApplicationController
   expose(:bowl_games) {BowlGame.all}
 
   def index
-    
+    @layout_class = "bowl-game-view"
   end
 end

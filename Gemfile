@@ -7,8 +7,13 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 gem 'devise',  '~> 2.1'
+gem 'cancan',   '~> 1.6'
 
 gem 'decent_exposure', '~> 1.0.0'
+
+gem 'roo'
+
+gem 'underscore-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
