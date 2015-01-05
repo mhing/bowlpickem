@@ -1,0 +1,52 @@
+.container-fluid
+  .row
+    .col-xs-10.col-xs-offset-1
+      .row
+        .col-xs-12
+          %h2
+            Pick Sheet Manager
+
+      .row
+        .col-xs-12
+          =form_tag import_pick_sheets_admin_pick_sheets_path, multipart: true, id: "upload-form" do
+            .row
+              .col-xs-12
+                .col-xs-3
+                  .pull-left
+                    =fa_icon "upload", text: "Import Pick Sheet"
+                .col-xs-7
+                  .pull-left
+                    = file_field_tag :file
+                  .pull-left
+                    = submit_tag "Import", class: "btn btn-primary"
+
+      .row.fold-line
+        .dark-line
+        .light-line
+
+      .row
+        .col-xs-12.pick-sheets
+          -if pick_sheets.length > 0
+            .row.pick-sheet-header
+              .col-xs-2
+                Player Name
+              .col-xs-2
+                ="# of Picks"
+              .col-xs-1
+                Tiebreaker
+              .col-xs-1
+                Year
+              .col-xs-2
+                Actions
+            -pick_sheets.each do |pick_sheet|
+              .row.pick-sheet
+                .col-xs-2
+                  =pick_sheet.player_name
+                .col-xs-2
+                  =pick_sheet.picks.length
+                .col-xs-1
+                  =pick_sheet.tiebreaker_points
+                .col-xs-1
+                  =pick_sheet.year
+                .col-xs-2
+                  =link_to "Edit", edit_admin_bowl_game_path(bowl_game)

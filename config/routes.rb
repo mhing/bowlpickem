@@ -12,6 +12,12 @@ BowlPickem::Application.routes.draw do
         post :import_game_matchups
       end
     end
+
+    resources :pick_sheets do 
+      collection do 
+        post :import_pick_sheets
+      end
+    end
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
