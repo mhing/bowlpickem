@@ -9,12 +9,35 @@ class Admin::BowlGamesController < ApplicationController
     @layout_class = 'admin-view'
   end
 
-  def edit
+  def new
+    @bowl_game = BowlGame.new
+  end
 
+  def create
+    debugger
+    @bowl_game = BowlGame.new(params[:bowl_game])
+
+    if @bowl_game.save
+      redirect_to admin_bowl_games_path
+    else
+      render :action => :new
+    end
+  end
+
+  def edit
+    @bowl_game = BowlGame.find params[:id]
   end
 
   def update
+    @bowl_game = BowlGame.find params[:id]
 
+    @bowl_game.attributes = params[:bowl_game]
+
+    if @bowl_game.save
+      redirect_to admin_bowl_games_path
+    else
+      render :action => :edit
+    end
   end
 
   def destroy

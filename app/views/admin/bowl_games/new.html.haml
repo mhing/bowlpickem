@@ -3,24 +3,23 @@
     .col-xs-10.col-xs-offset-1
       .row
         .col-xs-12
-          .row
-            %h2
-              ="Edit Bowl Game: #{bowl_game.name}"
+          %h2
+            New Bowl Game
 
       .row
         .col-xs-7
-          =form_for @bowl_game, url: {action: 'update'} do |bowl_game_form|
+          =form_for @bowl_game, url: {action: 'create'} do |bowl_game_form|
             .form-group
               =bowl_game_form.label :name
               =bowl_game_form.text_field :name, class: "form-control", required: true
 
             .form-group
-              =label_tag "bowl_game[bowl_game_teams_attributes][0][team_id]", "Team 1"
-              =select_tag "bowl_game[bowl_game_teams_attributes][0][team_id]", options_for_select(Team.all.collect {|team| [ team.name, team.id ] }, [@bowl_game.bowl_game_teams[0].bowl_game.name, @bowl_game.bowl_game_teams[0].team_id]), class: "form-control"
+              =label_tag "bowl_game[bowl_game_teams][0][team_id]", "Team 1"
+              =select_tag "bowl_game[bowl_game_teams][0][team_id]", options_for_select(Team.all.collect {|team| [ team.name, team.id ] }), include_blank: true, class: "form-control"
 
             .form-group
-              =label_tag "bowl_game[bowl_game_teams_attributes][1][team_id]", "Team 2"
-              =select_tag "bowl_game[bowl_game_teams_attributes][1][team_id]", options_for_select(Team.all.collect {|team| [ team.name, team.id ] }, [@bowl_game.bowl_game_teams[1].bowl_game.name, @bowl_game.bowl_game_teams[1].team_id]), class: "form-control"
+              =label_tag "bowl_game[bowl_game_teams][1][team_id]", "Team 2"
+              =select_tag "bowl_game[bowl_game_teams][1][team_id]", options_for_select(Team.all.collect {|team| [ team.name, team.id ] }), include_blank: true, class: "form-control"
 
             .form-group
               =bowl_game_form.label :location
@@ -35,5 +34,5 @@
               =bowl_game_form.text_field :tv_provider, class: "form-control", required: true
 
             .form-group
-              =bowl_game_form.submit "Update", class: "btn btn-primary"
+              =bowl_game_form.submit "New", class: "btn btn-primary"
               =link_to "Cancel", admin_bowl_games_path, class: "btn btn-warning"

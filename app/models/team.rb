@@ -3,5 +3,7 @@ class Team < ActiveRecord::Base
 
   has_many :bowl_game_teams
   has_many :bowl_game, :through => :bowl_game_teams
+
+  default_scope order('name')
   
 end

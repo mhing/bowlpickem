@@ -2,17 +2,19 @@
 -team_2 = bowl_game.team(1)
 
 .row.bowl-game
-  .col-xs-3
+  .col-xs-2
     =bowl_game.name
-  .col-xs-4
+  .col-xs-3
     -if team_1.name and team_2.name
       ="#{team_1.name} vs. #{team_2.name}"
     -else
       TBD
   .col-xs-2
     -if bowl_game.kickoff_date
-      =bowl_game.kickoff_date.strftime("%a, %b %d, %Y %l:%M %P")
+      =bowl_game.kickoff_date.strftime("%a, %b %d, %Y \n %l:%M %P")
   .col-xs-2
     =bowl_game.location
   .col-xs-1
     =bowl_game.tv_provider
+  .col-xs-2
+    =link_to "Edit", edit_admin_bowl_game_path(bowl_game), class: "btn btn-warning"
