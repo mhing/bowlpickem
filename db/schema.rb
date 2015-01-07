@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141222021224) do
+ActiveRecord::Schema.define(:version => 20150107051705) do
 
   create_table "bowl_game_teams", :force => true do |t|
     t.integer  "bowl_game_id"
@@ -22,12 +22,11 @@ ActiveRecord::Schema.define(:version => 20141222021224) do
 
   create_table "bowl_games", :force => true do |t|
     t.string   "name"
-    t.date     "kickoff_date"
-    t.time     "kickoff_time"
     t.string   "location"
     t.string   "tv_provider"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.datetime "kickoff_date"
   end
 
   create_table "pick_sheet_picks", :force => true do |t|

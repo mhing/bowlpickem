@@ -6,6 +6,8 @@ BowlPickem::Application.routes.draw do
   
   root :to => 'bowl_games#index'
 
+  
+
   namespace 'admin' do
     resources :bowl_games do 
       collection do

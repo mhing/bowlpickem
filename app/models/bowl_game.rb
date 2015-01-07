@@ -1,11 +1,13 @@
 require 'csv'
 
 class BowlGame < ActiveRecord::Base
-  attr_accessible :name, :kickoff_date, :kickoff_time, :location, :tv_provider, :bowl_game_teams_attributes
+  attr_accessible :name, :kickoff_date, :location, :tv_provider, :bowl_game_teams_attributes
 
   has_many :bowl_game_teams
   has_many :teams, :through => :bowl_game_teams
   accepts_nested_attributes_for :bowl_game_teams
+
+  default_scope order('kickoff_date')
 
   def self.import(file)
     if [".csv", ".xls", ".xlsx"].include? File.extname(file.original_filename)
@@ -23,7 +25,6 @@ class BowlGame < ActiveRecord::Base
                                 :location => row["LOCATION"],
                                 :tv_provider => row["TV"],
                                 :kickoff_date => row["DATE"],
-                                :kickoff_time => row["TIME"],
                                 :bowl_game_teams_attributes => bowl_game_teams_attributes}
 
         bowl_game.save!
